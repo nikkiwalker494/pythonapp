@@ -21,7 +21,8 @@ spec:
     spec:
       containers:
       - name: pyapp-container
-        image: nwalker494/pyapp:latest
+        image: eu.gcr.io/lbg-cloud-incubation/pyapp:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
 ---

@@ -21,7 +21,8 @@ spec:
     spec:
       containers:
       - name: nginxpy-container
-        image: nwalker494/nginxpy-custom:latest
+        image: eu.gcr.io/lbg-cloud-incubation/nginxpy-custom:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
 ---
