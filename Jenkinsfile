@@ -14,8 +14,7 @@ pipeline {
     stage('Push Docker Image to Registry') {
       steps {
         // withCredentials([usernamePassword(credentialsId: 'docker-registry-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) 
-        {
-        //   sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} ${DOCKER_REGISTRY}"
+        {        //   sh "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} ${DOCKER_REGISTRY}"
           sh "docker push nwalker494/nginxpy-custom:latest:${BUILD_NUMBER}"
         }
       }
