@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build Docker Flask Image') {
       steps {
-        sh 'docker build -t nwalker494/pyapp:latest:latest:build-${BUILD_NUMBER} .'
+        sh 'docker build -t nwalker494/pyapp:latest -t nwalker494/pyapp:build-${BUILD_NUMBER} .'
       }
     }
     stage('Build Docker nginx Image') {
@@ -15,7 +15,7 @@ pipeline {
     stage('Push Docker Image to Registry') {
       steps {
         sh '''
-          docker push nwalker494/pyapp:latest}
+          docker push nwalker494/pyapp:latest
           docker push nwalker494/pyapp:latest:${BUILD_NUMBER}
           docker push nwalker494/nginxpy-custom:latest
           docker push nwalker494/nginxpy-custom:latest:${BUILD_NUMBER}
@@ -27,7 +27,7 @@ pipeline {
       steps {
         sh '''
         cd ./kubernetes
-        kubectl apply -f 
+        kubectl apply -f .
         '''
       }
     }
