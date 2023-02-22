@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Build Docker Image') {
       steps {
-        sh 'docker build -t nwalker494/nginxpy-custom:latest:${BUILD_NUMBER} .'
+        sh 'docker build -t nwalker494/nginxpy-custom:latest .'
       }
     }
     stage('Push Docker Image to Registry') {
