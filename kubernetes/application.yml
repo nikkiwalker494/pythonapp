@@ -31,11 +31,11 @@ metadata:
 # this is just the name of the service
   name: pyapp-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
   # this has to be the name of which to tie into on linemetadata labels app in the manifest currently line 6
     app: py-app
   ports:
   - protocol: TCP
-    port: 80 
-    targetPort: 8080
+    port: 8080 
+ 
