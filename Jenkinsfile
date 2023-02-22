@@ -49,7 +49,7 @@ pipeline {
         sh '''
         cd ./kubernetes
         kubectl apply -f .
-        kubectl rollout restart deployment py-app-deployment
+        kubectl rollout restart deployment pyapp-deployment
         kubectl rollout restart deployment nginxpy-custom-deployment
         '''
       }
