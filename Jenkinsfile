@@ -13,7 +13,7 @@ pipeline {
     }
     stage('Push Docker Image to Registry') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'docker-registry-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {            
+        withCredentials([usernamePassword(credentialsId: 'docker-registry-credentials', usernameVariable: 'nwalker494', passwordVariable: 'password1')]) {            
           sh "docker push nwalker494/nginxpy-custom:latest:${BUILD_NUMBER}"
         }
       }
