@@ -16,9 +16,9 @@ pipeline {
       steps {
         sh '''
           docker push nwalker494/pyapp:latest
-          docker push nwalker494/pyapp:latest:${BUILD_NUMBER}
+          docker push nwalker494/pyapp:build-${BUILD_NUMBER}
           docker push nwalker494/nginxpy-custom:latest
-          docker push nwalker494/nginxpy-custom:latest:${BUILD_NUMBER}
+          docker push nwalker494/nginxpy-custom:build-${BUILD_NUMBER}
           '''
         }
       }
