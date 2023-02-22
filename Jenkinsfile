@@ -9,7 +9,7 @@ pipeline {
     stage('Build Docker nginx Image') {
       steps {
         sh ''' # could us cd nginx here or put the file path at the end of the build
-        docker build -t nwalker494/nginxpy-custom:latest:build-${BUILD_NUMBER} ./nginx'''
+        docker build -t nwalker494/nginxpy-custom:latest -t nwalker494/nginxpy-custom:build-${BUILD_NUMBER} ./nginx'''
       }
     }
     stage('Push Docker Image to Registry') {
