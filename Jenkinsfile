@@ -46,6 +46,17 @@ pipeline {
     
     stage('Deploy to Kubernetes') {
       steps {
+        script {
+            if ("${GIT_BRANCH}" == 'origin/main') {
+                        sh '''
+                            cd ./kubernetes
+                            
+                            sed -e 's,{{ns}},YOURNAMESPACE,g;' flask-app.yml | kubectl apply -f -
+                            kubectl apply -f .
+                            kubectl rollout restart deployment py-app
+                            kubectl rollout restart deployment nginxpy
+                            '''
+        }
         sh '''
         cd ./kubernetes
         kubectl apply -f .

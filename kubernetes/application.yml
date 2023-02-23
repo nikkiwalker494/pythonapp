@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: py-app
-  namespace: development
+  namespace: {{ns}}
   labels:
     app: py-app
 spec:
@@ -32,7 +32,7 @@ kind: Service
 metadata:
 # this is just the name of the service
   name: pyapp-service
-  namespace: development
+  namespace: {{ns}}
 spec:
   type: ClusterIP
   selector:
