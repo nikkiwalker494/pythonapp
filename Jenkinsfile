@@ -51,16 +51,18 @@ pipeline {
                         sh '''
                             cd ./kubernetes
                             
-                            sed -e 's,{{ns}},production,g;' application.yml | kubectl apply -f -
-                            kubectl rollout restart deployment py-app
-                            kubectl rollout restart deployment nginxpy
+                            sed -e 's,{{ns}},production,g;' *.yml | kubectl apply -f -
+                            kubectl rollout restart deployment --namespace=production py-app
+                            kubectl rollout restart deployment --namespace=production nginxpy
+
                             '''
         } else if ("${GIT_BRANCH}" == 'origin/development') {
                             sh '''
                             cd ./kubernetes
-                            sed -e 's,{{ns}},development,g;' application.yml | kubectl apply -f -
-                            kubectl rollout restart deployment py-app
-                            kubectl rollout restart deployment nginxpy
+                            sed -e 's,{{ns}},development,g;' *.yml | kubectl apply -f -
+                            kubectl rollout restart deployment --namespace=development py-app
+                            kubectl rollout restart deployment --namespace=development nginxpy
+
                             '''
       }
     }
