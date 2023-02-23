@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginxpy
-  namespace: development
+  namespace: {{ns}}
   labels:
     app: nginxpy
     # type: front end / back end etc
@@ -31,7 +31,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: nginxpy-service
-  namespace: development
+  namespace: {{ns}}
 spec:
   type: LoadBalancer
   selector:
