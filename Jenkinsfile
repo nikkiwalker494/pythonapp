@@ -52,7 +52,6 @@ pipeline {
                             cd ./kubernetes
                             
                             sed -e 's,{{ns}},production,g;' application.yml | kubectl apply -f -
-                            kubectl apply -f .
                             kubectl rollout restart deployment py-app
                             kubectl rollout restart deployment nginxpy
                             '''
@@ -60,7 +59,6 @@ pipeline {
                             sh '''
                             cd ./kubernetes
                             sed -e 's,{{ns}},development,g;' application.yml | kubectl apply -f -
-                            kubectl apply -f .
                             kubectl rollout restart deployment py-app
                             kubectl rollout restart deployment nginxpy
                             '''
