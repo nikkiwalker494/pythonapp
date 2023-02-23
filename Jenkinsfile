@@ -50,7 +50,7 @@ pipeline {
             if ("${GIT_BRANCH}" == 'origin/main') {
                         sh '''
                             cd ./kubernetes
-                            
+                            sed -e 's,{{ns}},production,g;' namespace.yml | kubectl apply -f -
                             sed -e 's,{{ns}},production,g;' application.yml | kubectl apply -f -
                             sed -e 's,{{ns}},production,g;' service.yml | kubectl apply -f -
                             kubectl rollout restart deployment --namespace=production py-app
@@ -60,6 +60,7 @@ pipeline {
         } else if ("${GIT_BRANCH}" == 'origin/development') {
                             sh '''
                             cd ./kubernetes
+                            sed -e 's,{{ns}},development,g;' namespace.yml | kubectl apply -f -
                             sed -e 's,{{ns}},development,g;' application.yml | kubectl apply -f -
                             sed -e 's,{{ns}},development,g;' service.yml | kubectl apply -f -
                             kubectl rollout restart deployment --namespace=development py-app
