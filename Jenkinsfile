@@ -26,7 +26,7 @@ pipeline {
 			        } else if ("${GIT_BRANCH}" == 'origin/development') {
 				        sh '''
                         cd ./nginx # could us cd nginx here or put the file path at the end of the build ./nginx
-                        'docker build -t nwalker494/nginxpy-custom:latest -t nwalker494/nginxpy-custom:build-${BUILD_NUMBER} .
+                        docker build -t nwalker494/nginxpy-custom:latest -t nwalker494/nginxpy-custom:build-${BUILD_NUMBER} .
 				        '''
 			        } 
                 }
